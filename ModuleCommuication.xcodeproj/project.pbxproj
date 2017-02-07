@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ABC60FCA1E498711005F2844 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC60FC91E498711005F2844 /* UserModel.m */; };
+		ABC60FCD1E498863005F2844 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC60FCC1E498863005F2844 /* Utils.m */; };
 		ABD90B201E359ADE001A4A9D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD90B1F1E359ADE001A4A9D /* main.m */; };
 		ABD90B231E359ADE001A4A9D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD90B221E359ADE001A4A9D /* AppDelegate.m */; };
 		ABD90B261E359ADE001A4A9D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD90B251E359ADE001A4A9D /* ViewController.m */; };
@@ -37,6 +39,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		ABC60FC81E498711005F2844 /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
+		ABC60FC91E498711005F2844 /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
+		ABC60FCB1E498863005F2844 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		ABC60FCC1E498863005F2844 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		ABD90B1B1E359ADE001A4A9D /* ModuleCommuication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ModuleCommuication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABD90B1F1E359ADE001A4A9D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		ABD90B211E359ADE001A4A9D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -85,6 +91,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ABC60FC71E4986DD005F2844 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				ABC60FC81E498711005F2844 /* UserModel.h */,
+				ABC60FC91E498711005F2844 /* UserModel.m */,
+				ABC60FCB1E498863005F2844 /* Utils.h */,
+				ABC60FCC1E498863005F2844 /* Utils.m */,
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
 		ABD90B121E359ADD001A4A9D = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +133,7 @@
 				ABD90B521E359B78001A4A9D /* PayViewController.m */,
 				ABD90B541E359C60001A4A9D /* CouponViewController.h */,
 				ABD90B551E359C60001A4A9D /* CouponViewController.m */,
+				ABC60FC71E4986DD005F2844 /* New Group */,
 				ABD90B571E35A020001A4A9D /* ModuleProtocol.h */,
 				ABD90B271E359ADE001A4A9D /* Main.storyboard */,
 				ABD90B2A1E359ADE001A4A9D /* Assets.xcassets */,
@@ -287,8 +305,10 @@
 			files = (
 				ABD90B261E359ADE001A4A9D /* ViewController.m in Sources */,
 				ABD90B561E359C60001A4A9D /* CouponViewController.m in Sources */,
+				ABC60FCA1E498711005F2844 /* UserModel.m in Sources */,
 				ABD90B231E359ADE001A4A9D /* AppDelegate.m in Sources */,
 				ABD90B201E359ADE001A4A9D /* main.m in Sources */,
+				ABC60FCD1E498863005F2844 /* Utils.m in Sources */,
 				ABD90B531E359B78001A4A9D /* PayViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -519,6 +539,7 @@
 				ABD90B4A1E359ADE001A4A9D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		ABD90B4B1E359ADE001A4A9D /* Build configuration list for PBXNativeTarget "ModuleCommuicationTests" */ = {
 			isa = XCConfigurationList;
@@ -527,6 +548,7 @@
 				ABD90B4D1E359ADE001A4A9D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		ABD90B4E1E359ADE001A4A9D /* Build configuration list for PBXNativeTarget "ModuleCommuicationUITests" */ = {
 			isa = XCConfigurationList;
@@ -535,6 +557,7 @@
 				ABD90B501E359ADE001A4A9D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

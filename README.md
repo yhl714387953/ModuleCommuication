@@ -256,10 +256,78 @@ _Pragma("clang diagnostic pop") \
     }
 ```
 
+###其他处理
+这里我们集中在控制器处理上了，现实中夸组件调用各种各样了，比如我要从 **UserModel** 获取用户信息，在**UserModel** 实现中有如下方法
+
+```
+-(NSDictionary*)getUserInfo{
+    NSDictionary* info = @{@"userId": @"8888", @"name": @"张三", @"age": @18};
+    
+    return info;
+}
+
+```
+
+那么我们在外部调用就可以获取到信息
+
+```
+    Class class = NSClassFromString(@"UserModel");
+    SEL selector = NSSelectorFromString(@"getUserInfo");
+    
+    id target = [[class alloc] init];
+    
+    if (target && [target respondsToSelector:selector]) {
+        id result;
+        SuppressPerformSelectorLeakWarning(
+            result = [target performSelector:selector]
+                                           );
+        NSLog(@"用户信息：%@", result);
+    }
+```
+
+如果需要调用工具类**Utils**里的方法处理数据，比如工具类**Utils**有个方法是给字典里的字符串追加前缀
+
+```
+-(NSDictionary *)formatInfo:(NSDictionary *)info{
+    if (![info isKindOfClass:[NSDictionary class]]) {
+        return nil;
+    }
+    
+    NSMutableDictionary* dic = [NSMutableDictionary dictionary];
+    for (id key in info) {
+        dic[key] = [NSString stringWithFormat:@"zuiye_%@", info[key]];
+    }
+    
+    return dic;
+}
+
+```
+
+那么实际调用的时候
+
+```
+    NSDictionary* info = @{@"userId": @"8888", @"name": @"张三", @"age": @18};
+    
+    
+    Class class = NSClassFromString(@"Utils");
+    SEL selector = NSSelectorFromString(@"formatInfo:");
+    
+    id target = [[class alloc] init];
+    
+    if (target && [target respondsToSelector:selector]) {
+        id result;
+        SuppressPerformSelectorLeakWarning(
+            result = [target performSelector:selector withObject:info]
+                                           );
+        NSLog(@"用户信息追加前缀：%@", result);
+    }
+    
+```
+
 ***
 总结了下我的方法有点类似于 **Target-Action** + **协议** 的方式，当然这个只是简单的实现，如果复杂的功能，那么还有去封装一下，比如原生、H5切换，我的思路不一定是最好的，如果想看看大神们的通信方案，开篇提供了链接，大家可以去看看。
 
 感谢您阅读完毕，如有疑问，欢迎添加QQ:**714387953**(蜗牛上高速)。
-**github**:[https://github.com/yhl714387953](https://github.com/yhl714387953)
+**github**:[https://github.com/yhl714387953/ModuleCommuication](https://github.com/yhl714387953/ModuleCommuication)
 如果有错误，欢迎指正，一起切磋，共同进步
 如果喜欢可以**Follow、Star、Fork**，都是给我最大的鼓励。
