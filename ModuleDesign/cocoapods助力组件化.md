@@ -1,4 +1,4 @@
-##cocoapods助力模块化
+##cocoapods助力组件化
 这一阵子搞模块化开发，碰到了好多问题，一直没时间写，结果还把工作计划给忘了，上午被老大数落一顿，失职，失职……
 
 推荐个写项目计划的软件啊，windows上很多人用project，Mac那就非**omniPlan**莫属了
@@ -283,7 +283,7 @@ s.homepage     = "http://EXAMPLE/ZuiyeModule"
 s.source_files  = "Classes", "Classes/**/*.{h,m}"
 ```
 
-代码文件，**Classes**文件夹，/**/ 表示文件夹下的所有文件和文件夹， *.{h,m} 表匹配该文件夹下的所有.h .m文件，多个文件路径用逗号分开
+代码文件，**Classes** 文件夹，/*\*/ 表示文件夹下的所有文件和文件夹， *.{h,m} 表匹配该文件夹下的所有.h .m文件，多个文件路径用逗号分开
 
 ```
 # 所有需要引用的文件都要添加进来 /**/表示所有文件夹 *.{文件后缀}代表所有符合后缀名的文件
@@ -377,7 +377,7 @@ ARC
 
 ```
 s.dependency "JSONKit", "~> 1.4"
-'BaseModel', :path => 'BaseProject/BaseModel'
+s.dependency 'BaseModel', :path => 'BaseProject/BaseModel'
 ```
 **因为有依赖了，所以AFNetworking、SDWebImage什么的可以不用写的podFile里了**
 
