@@ -262,6 +262,26 @@ s.homepage     = "http://EXAMPLE/ZuiyeModule"
  平台：IOS 	最低版本：8.0
  ***
  
+ 
+ ```
+ # deployment_target或者s.platform不开启，那在使用的时候会有arc问题(后续podspec文件中设置只支持arc)
+  # 比如__weak不能使用
+  
+  #  When using multiple platforms
+  # s.ios.deployment_target = "5.0"
+  # s.osx.deployment_target = "10.7"
+  # s.watchos.deployment_target = "2.0"
+  # s.tvos.deployment_target = "9.0"
+  
+ ```
+ 
+ 部署版本
+ 
+  deployment_target或者s.platform不开启，那在使用的时候会有arc问题(后续podspec文件中设置只支持arc) 比如__weak不能使用， 
+  设置了 **s.platform** 后，这个可以不用管
+ 
+ ***
+ 
  ```
  s.source       = { :git => "http://EXAMPLE/ZuiyeModule.git", :tag => "#{s.version}" }
  ```
@@ -511,8 +531,8 @@ Pod::Spec.new do |s|
   #  the deployment target. You can optionally include the target after the platform.
   #
 
-  # s.platform     = :ios
-  # s.platform     = :ios, "5.0"
+  s.platform     = :ios
+  s.platform     = :ios, "8.0"
 
   #  When using multiple platforms
   # s.ios.deployment_target = "5.0"
