@@ -324,7 +324,7 @@ s.source_files  = "Classes", "Classes/**/*.{h,m}"
 
 ```
 
-当然我们在写代码的时候也不方便去吧xib跟关联的类分开，所以我们可以把资源文件跟类文件放一起，把 **Resorces** 文件夹换成 **Classes** 文件夹就好了
+当然我们在写代码的时候也不方便去吧xib跟关联的类分开，所以我们可以把资源文件跟类文件放一起，把 **Resources** 文件夹换成 **Classes** 文件夹就好了
 
 ```
 s.resource  = 'Classes/**/*.{png,xib,framework,a,bundle,xcassets}'
