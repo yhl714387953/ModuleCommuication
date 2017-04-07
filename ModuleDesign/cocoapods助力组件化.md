@@ -303,11 +303,11 @@ s.homepage     = "http://EXAMPLE/ZuiyeModule"
 s.source_files  = "Classes", "Classes/**/*.{h,m}"
 ```
 
-代码文件，**Classes** 文件夹，/\*\*/ 表示文件夹下的所有文件和文件夹， *.{h,m} 表匹配该文件夹下的所有.h .m文件，多个文件路径用逗号分开
+代码文件，**Classes** 文件夹，/\*\*/ 表示文件夹下的所有文件和文件夹， *.{h,m,mm} 表匹配该文件夹下的所有.h .m .mm文件，多个文件路径用逗号分开
 
 ```
 # 所有需要引用的文件都要添加进来 /**/表示所有文件夹 *.{文件后缀}代表所有符合后缀名的文件
-  s.source_files  = "Classes", "Classes/**/*.{h,m}", "Resources/**/*.{h,m}"
+  s.source_files  = "Classes", "Classes/**/*.{h,m,mm}", "Resources/**/*.{h,m,mm}"
 ```
 ***
 
@@ -315,11 +315,11 @@ s.source_files  = "Classes", "Classes/**/*.{h,m}"
 # s.resource  = "icon.png"
   # s.resources = "Resources/*.png"
 ```
-资源文件，我理解的是除了代码之外的所有文件.asset .a .framework. .xib .storyboard等等
+资源文件，我理解的是除了代码之外的所有文件.asset .xib .storyboard等等  framework,a 不能引用，否则打包之后体积将包含该整个a文件
 
 ```
-# png,xib,framework,a,bundle 等必须当资源文件去添加
-  s.resource  = 'Resources/**/*.{png,xib,framework,a,bundle,xcassets}'
+# png,xib,bundle 等必须当资源文件去添加  framework,a 不能引用，否则打包之后体积将包含该整个a文件
+  s.resource  = 'Resources/**/*.{png,xib,bundle,xcassets}'
   # s.resources = "Resources/*.png"
 
 ```
@@ -327,7 +327,7 @@ s.source_files  = "Classes", "Classes/**/*.{h,m}"
 当然我们在写代码的时候也不方便去吧xib跟关联的类分开，所以我们可以把资源文件跟类文件放一起，把 **Resources** 文件夹换成 **Classes** 文件夹就好了
 
 ```
-s.resource  = 'Classes/**/*.{png,xib,framework,a,bundle,xcassets}'
+s.resource  = 'Classes/**/*.{png,xib,bundle,xcassets}'
 
 ```
 
