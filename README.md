@@ -1,4 +1,4 @@
-##组件化开发之组件通信
+## 组件化开发之组件通信
 
 组件化架构、通信方案想必大家都看到很多，[蘑菇街李忠](http://limboy.me/) 、[casatwy](http://casatwy.com/) 这两个博客收益颇多，我先说下开始我的组件通信思路。
 ****
@@ -11,7 +11,7 @@
 > * 参数传递：比如我们到订单页面，至少要给这个页面一个订单号
 > * 回调：一说到回调，那就是block、delegate占大多数了
 
-###首先我们解决视图展示问题
+### 首先我们解决视图展示问题
 
 ```
 Class class = NSClassFromString(@"CouponViewController");
@@ -21,7 +21,7 @@ UIViewController* couponVC = [[class alloc] init];
 
 上面的代码很容易看懂是我要跳转到**CouponViewController**页面
 
-###其次我们解决参数传递问题
+### 其次我们解决参数传递问题
 一提起delegate，原理就简单的理解为：**比如A跳转到B了，B页面让A页面就调用一个方法并传递参数**，这里我们正向去考虑 **A页面直接让B页面主动调用一个方法并传递参数**这里就以类似delegate的方式实现了参数传递
 
 **回到代码里**
@@ -29,7 +29,7 @@ UIViewController* couponVC = [[class alloc] init];
 ```
 performSelector: withObject:
 ```
-大家对上面的方法可能看到的比较多，只要调用perform开头的方法，这个方法就摆在第一位了，今天终于排上用场了。
+大家对上面的方法可能看到的比较多，只要调用perform开头的方法，这个方法就摆在第一位了，今天终于排上用场了。**类方法**、**实例方法** 都可以调用的，满足各种需求。
 
 比如在A页面调整到B页面，第一步我们想办法已经创建了这个B对象了，上面的方法的作用就是让B去调用他自己实现的方法，同时给传递一个参数，原理跟delegate一样
 
@@ -59,7 +59,7 @@ performSelector: withObject:
 
 那么在B页面就会看到输出这个参数了，参数你拿到了，随便怎么处理了
 
-###最后我们解决回调问题
+### 最后我们解决回调问题
 
 我们假设用delegate去做，可以定义一个协议，同时也要设置一个delegate，我们假定要A页面称为B页面的delegate，那么以前我们会在B页面的接口文件.h中声明一个代理，现在声明也没有用了，因为看不到！那么如何设置呢？delegate也可以当做一个普通的参数传递，比如在**A页面将self，作为参数传递过去**
 
@@ -256,7 +256,7 @@ _Pragma("clang diagnostic pop") \
     }
 ```
 
-###其他处理
+### 其他处理
 这里我们集中在控制器处理上了，现实中夸组件调用各种各样了，比如我要从 **UserModel** 获取用户信息，在**UserModel** 实现中有如下方法
 
 ```
@@ -288,7 +288,7 @@ _Pragma("clang diagnostic pop") \
 如果需要调用工具类**Utils**里的方法处理数据，比如工具类**Utils**有个方法是给字典里的字符串追加前缀
 
 ```
--(NSDictionary *)formatInfo:(NSDictionary *)info{
++(NSDictionary *)formatInfo:(NSDictionary *)info{
     if (![info isKindOfClass:[NSDictionary class]]) {
         return nil;
     }
@@ -307,17 +307,13 @@ _Pragma("clang diagnostic pop") \
 
 ```
     NSDictionary* info = @{@"userId": @"8888", @"name": @"张三", @"age": @18};
-    
-    
     Class class = NSClassFromString(@"Utils");
     SEL selector = NSSelectorFromString(@"formatInfo:");
     
-    id target = [[class alloc] init];
-    
-    if (target && [target respondsToSelector:selector]) {
+    if ([class respondsToSelector:selector]) {
         id result;
         SuppressPerformSelectorLeakWarning(
-            result = [target performSelector:selector withObject:info]
+                                           result = [class performSelector:selector withObject:info]
                                            );
         NSLog(@"用户信息追加前缀：%@", result);
     }

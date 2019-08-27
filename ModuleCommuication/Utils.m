@@ -10,7 +10,7 @@
 
 @implementation Utils
 
--(NSDictionary *)formatInfo:(NSDictionary *)info{
++(NSDictionary *)formatInfo:(NSDictionary *)info{
     if (![info isKindOfClass:[NSDictionary class]]) {
         return nil;
     }

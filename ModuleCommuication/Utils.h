@@ -10,6 +10,6 @@
 
 @interface Utils : NSObject
 
--(NSDictionary*)formatInfo:(NSDictionary*)info;
++(NSDictionary*)formatInfo:(NSDictionary*)info;
 
 @end

@@ -45,22 +45,18 @@
 
 
 - (IBAction)handleObj:(UIButton *)sender {
+    
     NSDictionary* info = @{@"userId": @"8888", @"name": @"张三", @"age": @18};
-    
-    
     Class class = NSClassFromString(@"Utils");
     SEL selector = NSSelectorFromString(@"formatInfo:");
     
-    id target = [[class alloc] init];
-    
-    if (target && [target respondsToSelector:selector]) {
+    if ([class respondsToSelector:selector]) {
         id result;
         SuppressPerformSelectorLeakWarning(
-            result = [target performSelector:selector withObject:info]
+                                           result = [class performSelector:selector withObject:info]
                                            );
         NSLog(@"用户信息追加前缀：%@", result);
     }
-    
 }
 
 
