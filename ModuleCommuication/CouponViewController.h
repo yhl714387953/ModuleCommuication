@@ -24,4 +24,7 @@
 
 @property (nonatomic, weak) id<ModuleDelegate> delegate;
 
+/** <#description#> */
+@property (nonatomic, copy) void (^block)(id obj);
+
 @end

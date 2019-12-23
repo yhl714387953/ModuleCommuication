@@ -49,8 +49,14 @@ typedef NS_ENUM(NSInteger, CouponType){
 }
 
 -(void)chooseCoupon{
+    
+    NSDictionary* info = @{@"type":@"super coupon", @"desc": @"可狠了", @"fee":@50};
     if (self.delegate && [self.delegate respondsToSelector:@selector(module:info:)]) {
-        [self.delegate module:self.class.description info:@{@"type":@"super coupon", @"desc": @"可狠了", @"fee":@50}];
+        [self.delegate module:self.class.description info:info];
+    }
+    
+    if (self.block) {
+        self.block(info);
     }
     
     [self.navigationController popViewControllerAnimated:YES];

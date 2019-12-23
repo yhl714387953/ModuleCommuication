@@ -38,6 +38,17 @@
        
     }
     
+    //    设置block
+    void (^block)(id) = ^(id couponObj){
+        NSLog(@"通过block回调：%@", couponObj);
+    };
+    SEL blockSEL = NSSelectorFromString(@"setBlock:");
+    if ([couponVC respondsToSelector:blockSEL]) {
+        SuppressPerformSelectorLeakWarning(
+                                           [couponVC performSelector:blockSEL withObject:block];
+                                           );
+    }
+    
     //传递参数
     SEL selector = NSSelectorFromString(@"setCouponFilter:");
     if ([couponVC respondsToSelector:selector]) {
