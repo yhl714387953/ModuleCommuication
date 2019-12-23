@@ -61,7 +61,10 @@ performSelector: withObject:
 
 ### 最后我们解决回调问题
 
-我们假设用delegate去做，可以定义一个协议，同时也要设置一个delegate，我们假定要A页面称为B页面的delegate，那么以前我们会在B页面的接口文件.h中声明一个代理，现在声明也没有用了，因为看不到！那么如何设置呢？delegate也可以当做一个普通的参数传递，比如在**A页面将self，作为参数传递过去**
+#### block的方式详见代码，也类似于传递一个参数，参数为block。
+
+#### delegate方式如下
+可以定义一个协议，同时也要设置一个delegate，我们假定要A页面称为B页面的delegate，那么以前我们会在B页面的接口文件.h中声明一个代理，现在声明也没有用了，因为看不到！那么如何设置呢？delegate也可以当做一个普通的参数传递，比如在**A页面将self，作为参数传递过去**
 
 ```
 SEL delegateSEL = NSSelectorFromString(@"setDelegate:");
